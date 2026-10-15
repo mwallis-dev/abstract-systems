@@ -38,6 +38,8 @@
   top: 2px;
   left: 0;
   height: 32px;
+  scale: 1 1;
+  transform-origin: center;
   border-radius: var(--menu-radius);
   pointer-events: none;
   background:
@@ -78,7 +80,7 @@
 
 .menu--ready .menu__pill {
   /* Only this absolutely positioned decoration changes width; siblings never reflow. */
-  transition: transform var(--menu-duration) var(--menu-ease), width var(--menu-duration) var(--menu-ease);
+  transition: transform var(--menu-duration) var(--menu-ease), width var(--menu-duration) var(--menu-ease), scale 140ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .menu__item {
@@ -110,6 +112,10 @@
 .menu__item[aria-pressed="true"] { color: var(--menu-ink); }
 
 @media (hover: hover) {
+  .menu:has(.menu__item[aria-pressed="true"]:hover) .menu__pill {
+    scale: 1 1.03;
+  }
+
   .menu__item[aria-pressed="false"]:hover {
     color: var(--menu-ink);
     background-color: rgb(10 37 64 / 3%);
