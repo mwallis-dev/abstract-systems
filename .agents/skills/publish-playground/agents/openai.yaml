@@ -1,0 +1,3 @@
+interface:
+  display_name: "Publish Playground"
+  short_description: "Publish this playground to GitHub and Vercel"
