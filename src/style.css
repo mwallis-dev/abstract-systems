@@ -1,0 +1,136 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", sans-serif;
+}
+
+:root {
+  font-family: var(--font-sans);
+  color: #0a2540;
+  color-scheme: light;
+  --menu-ink: #0a2540;
+  --menu-muted: #637488;
+  --menu-focus: #1f70ba;
+  --menu-radius: 999px;
+  --menu-duration: 340ms;
+  --menu-ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+::selection {
+  background: #e0edf8;
+  color: var(--menu-ink);
+}
+
+.menu {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: max-content;
+  padding: 2px 4px;
+  border-radius: var(--menu-radius);
+  isolation: isolate;
+}
+
+.menu__pill {
+  position: absolute;
+  z-index: -1;
+  top: 2px;
+  left: 0;
+  height: 32px;
+  border-radius: var(--menu-radius);
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 88% 92%, rgb(96 181 255 / 8%), rgb(96 181 255 / 2%) 48%, transparent 66%),
+    linear-gradient(180deg, rgb(255 255 255 / 76%), rgb(242 247 252 / 68%) 48%, rgb(224 237 248 / 72%));
+  box-shadow:
+    0 0 0 0.5px rgb(10 37 64 / 5%),
+    0 1px 1px -0.5px rgb(10 37 64 / 12%),
+    0 4px 6px -5px rgb(10 37 64 / 5%),
+    inset 0 0 0 0.5px rgb(10 37 64 / 12%),
+    inset 0 1px 0 rgb(255 255 255 / 78%),
+    inset 0 2px 3px -3px rgb(255 255 255 / 55%),
+    inset 0 -1px 0 rgb(10 37 64 / 9%),
+    inset 0 -3px 5px -5px rgb(10 37 64 / 28%);
+}
+
+.menu__pill::before,
+.menu__pill::after {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+}
+
+.menu__pill::before {
+  opacity: 0.5;
+  background:
+    linear-gradient(180deg, rgb(255 255 255 / 25%), transparent 34%),
+    linear-gradient(90deg, rgb(10 37 64 / 2%), transparent 24%, transparent 78%, rgb(31 112 186 / 2.7%));
+}
+
+.menu__pill::after {
+  opacity: 0.46;
+  background:
+    radial-gradient(circle at 48% 30%, rgb(255 255 255 / 38%), rgb(255 255 255 / 16%) 14%, rgb(255 255 255 / 5%) 30%, transparent 54%),
+    linear-gradient(108deg, transparent 30%, rgb(10 37 64 / 2.4%) 39%, rgb(255 255 255 / 26%) 49%, rgb(31 112 186 / 2.7%) 58%, transparent 70%);
+}
+
+.menu--ready .menu__pill {
+  /* Only this absolutely positioned decoration changes width; siblings never reflow. */
+  transition: transform var(--menu-duration) var(--menu-ease), width var(--menu-duration) var(--menu-ease);
+}
+
+.menu__item {
+  appearance: none;
+  display: flex;
+  position: relative;
+  flex: none;
+  align-items: center;
+  gap: 6px;
+  border: 0;
+  border-radius: var(--menu-radius);
+  padding: 6px 10px;
+  background: transparent;
+  color: var(--menu-muted);
+  font-family: inherit;
+  font-size: 13.7px;
+  font-weight: 500;
+  line-height: 20px;
+  white-space: nowrap;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: color 160ms ease-out, background-color 160ms ease-out;
+}
+
+.menu__item:nth-of-type(2) { font-size: 13.9px; }
+.menu__item:nth-of-type(3) { font-size: 13.8px; }
+.menu__item:nth-of-type(4) { font-size: 13.5px; }
+
+.menu__item[aria-pressed="true"] { color: var(--menu-ink); }
+
+@media (hover: hover) {
+  .menu__item[aria-pressed="false"]:hover {
+    color: var(--menu-ink);
+    background-color: rgb(10 37 64 / 3%);
+  }
+}
+
+.menu__item:focus-visible {
+  outline: 2px solid var(--menu-focus);
+  outline-offset: 3px;
+}
+
+.menu__icon {
+  display: block;
+  flex: none;
+  width: 16px;
+  height: 16px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu--ready .menu__pill,
+  .menu__item {
+    transition: none;
+  }
+}

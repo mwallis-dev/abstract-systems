@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "layout-transition",
+        "value": "*",
+        "files": [
+          "src/style.css"
+        ],
+        "createdAt": "2026-10-15T09:21:10.427Z",
+        "reason": "Implementation and finish reviewer accepted: only the absolutely positioned decorative selection pill animates width to match different labels; sibling controls do not reflow. Browser checks verified interrupted animation alignment. Preserve the Figma layered pill without scaling its shadows."
+      }
+    ]
+  }
+}
