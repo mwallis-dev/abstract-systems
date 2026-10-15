@@ -1,3 +1,3 @@
 interface:
   display_name: "Publish Playground"
-  short_description: "Publish this playground to GitHub and Vercel"
+  short_description: "Commit and push to main without extra checks"
