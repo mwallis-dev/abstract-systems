@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Inter", sans-serif;
+  --font-sans: "Work Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 :root {
@@ -22,12 +22,15 @@
 }
 
 .menu {
+  /* One original pixel, scaled with the 16px-equivalent menu text. */
+  --menu-unit: calc(1rem / 14);
+  --menu-spacing: 1;
   position: relative;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: calc(8 * var(--menu-unit) * var(--menu-spacing));
   width: max-content;
-  padding: 2px 4px;
+  padding: calc(2 * var(--menu-unit) * var(--menu-spacing)) calc(4 * var(--menu-unit) * var(--menu-spacing));
   border-radius: var(--menu-radius);
   isolation: isolate;
 }
@@ -35,9 +38,9 @@
 .menu__pill {
   position: absolute;
   z-index: -1;
-  top: 2px;
+  top: calc(2 * var(--menu-unit) * var(--menu-spacing));
   left: 0;
-  height: 32px;
+  height: calc((20 + 12 * var(--menu-spacing)) * var(--menu-unit));
   scale: 1 1;
   transform-origin: center;
   border-radius: var(--menu-radius);
@@ -46,21 +49,21 @@
     radial-gradient(ellipse at 88% 92%, rgb(96 181 255 / 8%), rgb(96 181 255 / 2%) 48%, transparent 66%),
     linear-gradient(180deg, rgb(255 255 255 / 76%), rgb(242 247 252 / 68%) 48%, rgb(224 237 248 / 72%));
   box-shadow:
-    0 0 0 0.5px rgb(10 37 64 / 5%),
-    0 1px 1px -0.5px rgb(10 37 64 / 12%),
-    0 4px 6px -5px rgb(10 37 64 / 5%),
-    inset 0 0 0 0.5px rgb(10 37 64 / 12%),
-    inset 0 1px 0 rgb(255 255 255 / 78%),
-    inset 0 2px 3px -3px rgb(255 255 255 / 55%),
-    inset 0 -1px 0 rgb(10 37 64 / 9%),
-    inset 0 -3px 5px -5px rgb(10 37 64 / 28%);
+    0 0 0 calc(0.5 * var(--menu-unit)) rgb(10 37 64 / 5%),
+    0 calc(1 * var(--menu-unit)) calc(1 * var(--menu-unit)) calc(-0.5 * var(--menu-unit)) rgb(10 37 64 / 12%),
+    0 calc(4 * var(--menu-unit)) calc(6 * var(--menu-unit)) calc(-5 * var(--menu-unit)) rgb(10 37 64 / 5%),
+    inset 0 0 0 calc(0.5 * var(--menu-unit)) rgb(10 37 64 / 12%),
+    inset 0 calc(1 * var(--menu-unit)) 0 rgb(255 255 255 / 78%),
+    inset 0 calc(2 * var(--menu-unit)) calc(3 * var(--menu-unit)) calc(-3 * var(--menu-unit)) rgb(255 255 255 / 55%),
+    inset 0 calc(-1 * var(--menu-unit)) 0 rgb(10 37 64 / 9%),
+    inset 0 calc(-3 * var(--menu-unit)) calc(5 * var(--menu-unit)) calc(-5 * var(--menu-unit)) rgb(10 37 64 / 28%);
 }
 
 .menu__pill::before,
 .menu__pill::after {
   content: "";
   position: absolute;
-  inset: 1px;
+  inset: calc(1 * var(--menu-unit));
   border-radius: inherit;
 }
 
@@ -89,25 +92,21 @@
   position: relative;
   flex: none;
   align-items: center;
-  gap: 6px;
+  gap: calc(6 * var(--menu-unit) * var(--menu-spacing));
   border: 0;
   border-radius: var(--menu-radius);
-  padding: 6px 10px;
+  padding: calc(6 * var(--menu-unit) * var(--menu-spacing)) calc(10 * var(--menu-unit) * var(--menu-spacing));
   background: transparent;
   color: var(--menu-muted);
   font-family: inherit;
-  font-size: 13.7px;
+  font-size: 1rem;
   font-weight: 500;
-  line-height: 20px;
+  line-height: 1.43;
   white-space: nowrap;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
   transition: color 160ms ease-out, background-color 160ms ease-out;
 }
-
-.menu__item:nth-of-type(2) { font-size: 13.9px; }
-.menu__item:nth-of-type(3) { font-size: 13.8px; }
-.menu__item:nth-of-type(4) { font-size: 13.5px; }
 
 .menu__item[aria-pressed="true"] { color: var(--menu-ink); }
 
@@ -123,15 +122,15 @@
 }
 
 .menu__item:focus-visible {
-  outline: 2px solid var(--menu-focus);
-  outline-offset: 3px;
+  outline: calc(2 * var(--menu-unit)) solid var(--menu-focus);
+  outline-offset: calc(3 * var(--menu-unit));
 }
 
 .menu__icon {
   display: block;
   flex: none;
-  width: 16px;
-  height: 16px;
+  width: calc(16 * var(--menu-unit));
+  height: calc(16 * var(--menu-unit));
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -139,4 +138,60 @@
   .menu__item {
     transition: none;
   }
+}
+
+.menu[data-treatment="flat"] .menu__pill {
+  background: #e0edf8;
+  box-shadow: none;
+}
+
+.menu[data-treatment="outline"] .menu__pill {
+  background: transparent;
+  box-shadow: inset 0 0 0 1px #637488;
+}
+
+.menu[data-treatment="inset"] .menu__pill {
+  background: #edf3f8;
+  box-shadow: inset 0 2px 4px rgb(10 37 64 / 18%), inset 0 -1px 0 rgb(255 255 255 / 85%);
+}
+
+.menu[data-treatment]:not([data-treatment="raised"]) .menu__pill::before,
+.menu[data-treatment]:not([data-treatment="raised"]) .menu__pill::after {
+  display: none;
+}
+
+.demo-layout { width: 100%; max-width: 34rem; min-width: 0; }
+.menu-preview { width: 100%; overflow-x: auto; padding: 0.5rem; }
+.menu-preview .menu { margin-inline: auto; }
+.config-panel {
+  width: 100%;
+  padding: 1.5rem;
+  border: 1px solid #dce2e8;
+  border-radius: 1rem;
+  color: #0a2540;
+  background: #f8fafc;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+.config-panel h1 { margin: 0; font-size: 1rem; font-weight: 500; }
+.config-help { margin: 0.375rem 0 1.25rem; color: #526276; }
+.config-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
+.config-fields label { display: flex; flex-direction: column; gap: 0.375rem; font-weight: 500; }
+.config-fields input, .config-fields select {
+  width: 100%; min-width: 0; min-height: 2.75rem; padding: 0.5rem 0.625rem;
+  border: 1px solid #bac5d0; border-radius: 0.5rem;
+  background: white; color: #0a2540; font: inherit; font-size: 1rem;
+}
+.field-help { color: #526276; font-size: 0.75rem; font-weight: 400; }
+.config-status { margin: 1rem 0; color: #526276; min-height: 1.5em; }
+.config-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+.config-actions button {
+  min-height: 2.75rem; padding: 0.625rem 0.875rem; border: 1px solid #bac5d0;
+  border-radius: 0.5rem; background: white; color: #0a2540; font: inherit; font-weight: 500; cursor: pointer;
+}
+.config-actions button[type="submit"] { background: #0a2540; border-color: #0a2540; color: white; }
+.config-panel :is(input, select, button):focus-visible { outline: 2px solid #1f70ba; outline-offset: 3px; }
+@media (max-width: 34rem) {
+  .config-fields { grid-template-columns: 1fr; }
+  .config-panel { padding: 1rem; }
 }

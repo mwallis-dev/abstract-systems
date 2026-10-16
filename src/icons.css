@@ -1,0 +1,19 @@
+* { box-sizing: border-box; }
+body { margin: 0; background: #fff; color: #0a2540; font: 16px/1.5 system-ui, sans-serif; }
+main { max-width: 1100px; margin: 0 auto; padding: 40px 20px; }
+h1 { margin: 0; font-size: 24px; }
+p { margin: 8px 0 24px; }
+label { display: block; margin-bottom: 6px; }
+input { width: 100%; padding: 12px; border: 1px solid #a8b4c0; border-radius: 8px; font: inherit; color: inherit; }
+#status, footer { font-size: 13px; color: #526477; }
+#status { margin: 16px 0; min-height: 20px; }
+#icons { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 8px; }
+button { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; min-height: 112px; padding: 16px 8px; border: 1px solid #e0e5ea; border-radius: 8px; background: white; color: inherit; font: inherit; font-size: 12px; cursor: pointer; overflow-wrap: anywhere; user-select: none; }
+button img { width: 24px; height: 24px; }
+button small { color: #526477; }
+button:active { background: #e0edf8; }
+button[data-copied] { background: #e0edf8; border-color: #6585a1; }
+:focus-visible { outline: 2px solid #1f70ba; outline-offset: 3px; }
+@media (hover: hover) { button:hover { background: #f3f6f9; } }
+footer { margin-top: 32px; }
+a { color: inherit; }

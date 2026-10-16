@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Icon review — Abstract Systems</title>
+    <link rel="stylesheet" href="/src/icons.css" />
+  </head>
+  <body>
+    <main>
+      <h1>Icon review</h1>
+      <p>Search, then click an icon to copy its source ID.</p>
+      <form role="search">
+        <label for="search">Search icons</label>
+        <input id="search" type="search" placeholder="Try user, briefcase, book, or layers" spellcheck="false" />
+      </form>
+      <p id="status" role="status">Loading icons…</p>
+      <div id="icons" aria-label="Icons"></div>
+      <footer>Lucide, Tabler, and Heroicons from <a href="https://github.com/LeulAria/Aria-Icons">Aria Icons</a>, stored locally. IDs identify the exact collection and SVG path.</footer>
+    </main>
+    <script type="module" src="/src/icons.js"></script>
+  </body>
+</html>
