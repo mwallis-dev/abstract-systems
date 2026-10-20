@@ -8,6 +8,7 @@ export default defineConfig({
       input: {
         main: new URL('./index.html', import.meta.url).pathname,
         icons: new URL('./icons.html', import.meta.url).pathname,
+        location: new URL('./location.html', import.meta.url).pathname,
       },
     },
   },

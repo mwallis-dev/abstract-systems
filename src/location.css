@@ -1,0 +1,110 @@
+/* These styles belong only to the location exercise. */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  background: #f5f9fc;
+}
+
+/* Page placement is separate from the row's internal layout. */
+.location-demo {
+  max-width: 492px;
+  margin-inline: auto;
+  padding: 144px 24px 48px;
+}
+
+.location-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  color: #637488;
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 1.333333;
+  white-space: nowrap;
+}
+
+.location-row > * {
+  flex-shrink: 0;
+}
+
+/* A 6px dot sits in a 12px box, with 2px of extra space after it. */
+.location-dot {
+  display: grid;
+  place-items: center;
+  width: 12px;
+  height: 12px;
+  margin-right: 2px;
+}
+
+.location-dot::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #31b564;
+}
+
+.location-name {
+  text-transform: uppercase;
+}
+
+.location-weather {
+  display: block;
+  width: 12px;
+  height: 12px;
+}
+
+.location-time {
+  display: inline-flex;
+  font-variant-numeric: tabular-nums;
+}
+
+.clock-display {
+  display: inline-flex;
+  vertical-align: middle;
+}
+
+.clock-digit,
+.clock-separator {
+  display: block;
+  width: 1ch;
+  height: 1.333333em;
+}
+
+/* Clip the outgoing and incoming numbers to one line of text. */
+.clock-digit {
+  overflow: hidden;
+  mask-image: linear-gradient(transparent, #000 12%, #000 88%, transparent);
+}
+
+.clock-digit-track,
+.clock-digit-value {
+  display: block;
+}
+
+.clock-digit-value {
+  height: 1.333333em;
+  line-height: 1.333333;
+}
+
+.clock-digit-track--rolling {
+  animation: clock-roll 300ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* The track holds two equal rows, so 50% moves it up by one digit. */
+@keyframes clock-roll {
+  from { transform: translateY(0); }
+  to { transform: translateY(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .clock-digit-track--rolling {
+    animation-duration: 0s;
+  }
+}

@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5f9fc" />
+    <meta name="description" content="A study of the London location row with a live London clock." />
+    <title>Location row — Abstract Systems</title>
+    <link rel="stylesheet" href="/src/location.css" />
+    <script type="module" src="/src/location.js"></script>
+  </head>
+  <body>
+    <main class="location-demo" aria-label="London location row study">
+      <div class="location-row">
+        <!-- The container reserves space for a ring in a later exercise. -->
+        <span class="location-dot" aria-hidden="true"></span>
+
+        <span class="location-name">London,UK</span>
+
+        <svg class="location-weather" role="img" aria-label="Weather symbol: cloud with precipitation" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11.75" cy="16.25" r=".75" fill="currentColor" stroke="none" />
+          <circle cx="6.25" cy="16.25" r=".75" fill="currentColor" stroke="none" />
+          <circle cx="9" cy="14.75" r=".75" fill="currentColor" stroke="none" />
+          <circle cx="11.75" cy="13.25" r=".75" fill="currentColor" stroke="none" />
+          <circle cx="6.25" cy="13.25" r=".75" fill="currentColor" stroke="none" />
+          <circle cx="9" cy="11.75" r=".75" fill="currentColor" stroke="none" />
+          <path d="M14.477,13.687c1.064-.662,1.773-1.842,1.773-3.187,0-1.736-1.185-3.182-2.786-3.609-.186-2.314-2.102-4.141-4.464-4.141-2.485,0-4.5,2.015-4.5,4.5,0,.35,.049,.686,.124,1.013-1.597,.067-2.874,1.374-2.874,2.987,0,1.208,.714,2.249,1.743,2.725" />
+          <path d="M9.705,8c.687-.767,1.684-1.25,2.795-1.25,.333,0,.657,.059,.964,.141" />
+        </svg>
+
+        <!-- JavaScript replaces the placeholder with the current London time. -->
+        <time class="location-time" aria-label="London time unavailable">--:--:--</time>
+      </div>
+    </main>
+  </body>
+</html>
