@@ -8,70 +8,23 @@
     <title>Menu demo — Abstract Systems</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@500&display=swap" rel="stylesheet" />
   </head>
-  <body class="m-0 bg-white antialiased">
-    <main class="grid min-h-svh place-items-center px-8 py-12">
-      <div class="demo-layout flex flex-col items-center gap-7">
-        <div class="menu-preview">
-        <div class="menu" role="group" aria-label="Menu interaction demo" aria-describedby="demo-help" data-node-id="1:3">
-          <span class="menu__pill" aria-hidden="true"></span>
-          <button class="menu__item" type="button" aria-pressed="true" data-node-id="1:44">
-            <svg class="menu__icon" aria-hidden="true" focusable="false" data-lucide="hand" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2"/><path d="M14 10V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v2"/><path d="M10 10.5V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></svg>
-            <span>About</span>
-          </button>
-          <button class="menu__item" type="button" aria-pressed="false" data-node-id="1:60">
-            <svg class="menu__icon" aria-hidden="true" focusable="false" data-lucide="paintbrush-vertical" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v2"/><path d="M14 2v4"/><path d="M17 2a1 1 0 0 1 1 1v9H6V3a1 1 0 0 1 1-1z"/><path d="M6 12a1 1 0 0 0-1 1v1a2 2 0 0 0 2 2h2a1 1 0 0 1 1 1v2.9a2 2 0 1 0 4 0V17a1 1 0 0 1 1-1h2a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1"/></svg>
-            <span>Work</span>
-          </button>
-          <button class="menu__item" type="button" aria-pressed="false" data-node-id="1:73">
-            <svg class="menu__icon" aria-hidden="true" focusable="false" data-lucide="book" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"/></svg>
-            <span>Library</span>
-          </button>
-          <button class="menu__item" type="button" aria-pressed="false" data-node-id="1:80">
-            <svg class="menu__icon" aria-hidden="true" focusable="false" data-lucide="layers" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"/><path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"/><path d="M2 17a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 17"/></svg>
-            <span>Stack</span>
-          </button>
-        </div>
-        </div>
-        <p id="demo-help" class="m-0 text-center text-xs leading-5 text-slate-500">This was built using the power of Codex (GPT-6.1 Sol) </p>
-        <form class="config-panel" id="menu-config" aria-labelledby="config-title">
-          <h1 id="config-title">Menu experiments</h1>
-          <p class="config-help">Change the controls, then press Return to apply and reload.</p>
-          <div class="config-fields">
-            <label for="treatment">Pill treatment
-              <select id="treatment" name="treatment">
-                <option value="raised">Current raised</option>
-                <option value="flat">Flat fill</option>
-                <option value="outline">Outline</option>
-                <option value="inset">Inset</option>
-              </select>
-            </label>
-            <label for="radius">Corner radius
-              <select id="radius" name="radius">
-                <option value="0">Square · 0px</option>
-                <option value="4">Subtle · 4px</option>
-                <option value="8">Soft · 8px</option>
-                <option value="12">Rounded · 12px</option>
-                <option value="16">Rounder · 16px</option>
-                <option value="999">Full pill · baseline</option>
-              </select>
-            </label>
-            <label for="spacing">Spacing (%)
-              <input id="spacing" name="spacing" type="number" min="50" max="175" step="5" required aria-describedby="spacing-help" />
-              <span class="field-help" id="spacing-help">Gaps and padding. Baseline: 100%.</span>
-            </label>
-            <label for="duration">Selection duration (ms)
-              <input id="duration" name="duration" type="number" min="0" max="1000" step="10" required aria-describedby="duration-help" />
-              <span class="field-help" id="duration-help">0 is instant. Baseline: 340ms.</span>
-            </label>
-          </div>
-          <p id="config-status" class="config-status" role="status"></p>
-          <div class="config-actions">
-            <button type="submit">Apply and reload</button>
-            <button type="button" id="reset-config">Reset to baseline</button>
-          </div>
-        </form>
+  <body>
+    <main class="demo-page">
+      <div class="menu" role="group" aria-label="Menu interaction demo" data-node-id="1:3">
+        <button class="menu__item" type="button" aria-pressed="true" data-node-id="1:44">
+          <span>About</span>
+        </button>
+        <button class="menu__item" type="button" aria-pressed="false" data-node-id="1:60">
+          <span>Work</span>
+        </button>
+        <button class="menu__item" type="button" aria-pressed="false" data-node-id="1:73">
+          <span>Library</span>
+        </button>
+        <button class="menu__item" type="button" aria-pressed="false" data-node-id="1:80">
+          <span>Stack</span>
+        </button>
       </div>
     </main>
     <script type="module" src="/src/main.js"></script>

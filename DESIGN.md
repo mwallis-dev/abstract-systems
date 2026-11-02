@@ -1,100 +1,71 @@
----
-name: "Abstract Systems menu demo"
-description: "Faithful compact light navigation from Figma node 1:3."
-colors:
-  page: "#ffffff"
-  menu-ink: "#0a2540"
-  menu-muted: "#637488"
-  menu-focus: "#1f70ba"
-  selection: "#e0edf8"
-  hover: "rgb(10 37 64 / 3%)"
-typography:
-  label:
-    fontFamily: "Inter, sans-serif"
-    fontSize: "13.7px"
-    fontWeight: 500
-    lineHeight: "20px"
-  helper:
-    fontFamily: "Inter, sans-serif"
-    fontSize: "12px"
-    lineHeight: "20px"
-rounded:
-  menu: "999px"
-spacing:
-  icon-label: "6px"
-  items: "8px"
-  button-inset: "6px 10px"
-  menu-inset: "2px 4px"
-components:
-  menu-button:
-    backgroundColor: "transparent"
-    textColor: "{colors.menu-muted}"
-    typography: "{typography.label}"
-    rounded: "{rounded.menu}"
-    padding: "{spacing.button-inset}"
-    height: "32px"
-  menu-button-selected:
-    textColor: "{colors.menu-ink}"
-  menu-button-hover:
-    backgroundColor: "{colors.hover}"
-    textColor: "{colors.menu-ink}"
----
+# Abstract Systems menu
 
-# Design System: Abstract Systems menu demo
+The menu demo uses four text labels on white: About, Work, Library, Stack.
+The selected item has one pale blue fill. Keep the labels, padding, and font
+weight consistent so the selection is the first visible difference.
 
-## Overview
+## Menu control
 
-**Creative North Star: "Compact light navigation"**
+Use `.menu__item` buttons to select an item in this interaction demo. Use real
+links when a future page needs navigation to another URL; these buttons do not
+open pages.
 
-A faithful interaction study of Figma file X3eGd5JYkmFCCoQPi8thX2, node 1:3. The supplied compact light menu is the visual authority: preserve its proportions, original icons, label hierarchy, and layered blue-gray selection pill. This is a narrow demo, not a broader brand system.
+States: unselected, selected, hover, active, and keyboard focus. About is selected
+on load. Exactly one button has `aria-pressed="true"`.
 
-**Key Characteristics:**
-- Compact horizontal navigation on white.
-- Original 16 × 16 SVGs and medium-weight Inter labels.
-- One shared layered pill, with restrained hover and visible keyboard focus.
+- Selected: `--menu-selected` background and `--menu-ink` text.
+- Unselected: transparent background and `--menu-muted` text.
+- Hover: `--menu-hover` background and `--menu-ink` text on an unselected item.
+- Keyboard focus: a 2px neutral grey outline, offset by 2px. Keep this separate
+  from selection.
+- Forced colours: use a 2px `Highlight` border inside the selected button and a
+  separate `ButtonText` focus outline. System colours keep both states visible.
 
-## Colors
+```html
+<!-- Correct: selected state comes from the button attribute. -->
+<button class="menu__item" type="button" aria-pressed="true">
+  <span>About</span>
+</button>
 
-The palette is quiet blue-gray on white. Menu ink identifies the selected label; muted ink serves the remaining labels. Focus blue is reserved for the keyboard outline. The selected pill's translucent gradient stops and shading are recorded verbatim in the sidecar, rather than expanded into an invented color scale.
+<!-- Incorrect: a label without a button cannot receive keyboard input. -->
+<span class="menu__item">About</span>
+```
 
-## Typography
+## Materials
 
-Inter with a sans-serif fallback supplies the medium-weight menu labels. The label token is the About baseline; the observed optical size adjustments are Work (13.9px), Library (13.8px), and Stack (13.5px). Keep the supplied capitalization. The helper is a subordinate demo instruction, not a new heading or brand type scale.
+`src/style.css` defines the menu tokens. Use these tokens for menu states.
 
-## Layout
+| Token | Value | Use |
+| --- | --- | --- |
+| `--menu-ink` | `#0a2540` | Selected and hover text |
+| `--menu-muted` | `#637488` | Unselected text |
+| `--menu-selected` | `#e0edf8` | Selected and active fill |
+| `--menu-hover` | `#f3f6f9` | Unselected hover fill |
+| `--menu-focus` | `#5f5f5f` | Keyboard focus outline |
 
-The menu is one intrinsic-width horizontal row. Its four buttons retain their order: About, Work, Library, Stack. Use the frontmatter's item gap, icon gap, and insets; each original icon occupies a fixed square (16px). The pill is absolutely positioned with a height of (32px) and top inset of (2px); its horizontal position is the selected button's offset minus (1.35px), and its width is that button's measured width plus (4.7px).
+- Font: Work Sans, weight 500. Keep the weight unchanged on selection and hover.
+- Labels: 16px with a 1.5 line height; 14px at viewport widths up to 24rem.
+- Buttons: at least 44px high and 44px wide; 10px vertical and 14px horizontal
+  padding. At widths up to 24rem, use 12px horizontal padding.
+- Gap between buttons: 4px. Corners: 999px.
+- Page: centre the menu with at least 16px horizontal space at each edge.
+- At widths too small for one row, wrap and centre the buttons. Keep every label
+  visible and each button at least 44px high.
 
-The demo centers the menu and helper in the viewport, with horizontal page padding (32px) and menu-to-helper spacing (28px). This surrounding white canvas is presentation scaffolding. There are no layout breakpoints or mobile rearrangements in this scope.
+## Behaviour and restraint
 
-## Elevation & Depth
+Click, Enter, or Space selects a button. Left and Right wrap selection and focus.
+Home and End select and focus the first and last button. Keyboard selection
+and reduced-motion feedback are immediate.
 
-Depth belongs to the selected pill. Translucent radial and linear gradients, fine outer and inset shadows, and two subtle overlay layers reproduce its light blue-gray material. Keep the complete gradient and shadow recipe in `.impeccable/design.json`; a flat fill or heavier generic shadow changes the reference.
+Pointer selection cross-fades the fills over 150ms. Hover fades over 120ms on
+devices with a mouse or other fine pointer. These transitions change opacity
+only; buttons and labels keep their positions. Initial page load has no animation.
 
-## Shapes
+Pointer presses scale only the label to 0.96 over 120ms. The button's hit area
+stays unchanged. Keyboard focus and reduced motion disable this press effect.
 
-Use the menu radius token for buttons and pill. The row itself has no visible enclosing border or card. Original SVG artwork retains its path geometry, fills, and group opacity.
-
-## Components
-
-### Navigation
-
-About starts selected. The controls are native buttons in a labeled group, each exposing selection with `aria-pressed`; they do not navigate. Selecting another item moves the single shared pill, preserving sibling layout. Initialize the pill after measuring and enable motion only after the font is ready; keep it aligned when dimensions change.
-
-The pill transitions position and width together over (340ms), using `cubic-bezier(0.22, 1, 0.36, 1)`. Unselected hover darkens the label and adds the faint hover fill on hover-capable devices; label and background transitions use (160ms) `ease-out`. Keyboard focus uses the focus color with an outline (2px) and offset (3px). Reduced-motion preference removes transitions.
-
-Tab reaches each button; Enter or Space activates it. Left/Right arrows wrap selection and focus, and Home/End select and focus the first/last item. The sidecar snippets preview visual states; the live app owns selection behavior.
-
-Evidence: `.impeccable/review/figma-reference.png`, `desktop.png`, `menu-about.png`, and `menu-work-focus.png` in the same review directory.
-
-## Do's and Don'ts
-
-### Do:
-- Do preserve the original SVG paths, fills, opacity, and 16 × 16 dimensions.
-- Do move one shared pill and retain fixed sibling positions.
-- Do preserve hover, keyboard focus, and reduced-motion states.
-
-### Don't:
-- Don't invent a new visual identity or add decorative surfaces.
-- Don't turn the demo buttons into real navigation.
-- Don't introduce dark mode, a mobile rearrangement, or a responsive redesign.
+Keep icons, credit copy, gradients, layered shadows, and experiment settings out
+of this menu. They add visual detail without helping users select a label.
+The implementation is in `index.html`, `src/style.css`, and `src/main.js`.
+The earlier visual study files are historical references for the original menu.

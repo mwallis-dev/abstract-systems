@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Navigation study — Abstract Systems</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./study.css" />
+  <link rel="stylesheet" href="./picker.css" />
+</head>
+<body>
+  <header class="study-heading">
+    <p class="eyebrow">Abstract Systems / Navigation study</p>
+    <h1 id="direction-title">Pill</h1>
+    <p id="direction-note">The current menu, with your saved settings.</p>
+  </header>
+  <details class="motion-panel">
+    <summary>Motion settings</summary>
+    <form id="motion-form">
+      <fieldset id="motion-fields">
+        <legend>Selection feedback</legend>
+        <label for="duration">Duration <output id="duration-value" for="duration">160 ms</output></label>
+        <input type="range" id="duration" min="0" max="600" step="10" value="160" />
+        <label for="speed">Playback speed</label>
+        <select id="speed"><option value="1">1×</option><option value="2">0.5×</option><option value="4">0.25×</option></select>
+        <button type="button" id="copy-config">Copy settings</button>
+      </fieldset>
+      <p id="motion-note">The current menu keeps your saved settings.</p>
+      <p id="copy-status" role="status"></p>
+    </form>
+  </details>
+  <main id="stage" aria-label="Navigation preview"></main>
+  <p class="study-keys">1–5 to compare · R to reset the preview</p>
+<nav class="proto-picker" aria-label="Prototype variants">
+  <span class="proto-picker-highlight" aria-hidden="true"></span>
+  <button class="proto-picker-item" data-active aria-current="true">Pill</button>
+  <button class="proto-picker-item">Line</button>
+  <button class="proto-picker-item">Group</button>
+  <button class="proto-picker-item">Rail</button>
+  <button class="proto-picker-item">Fold</button>
+  <span class="proto-picker-divider" aria-hidden="true"></span>
+  <button class="proto-picker-item proto-picker-replay" aria-label="Replay animation (R)">↻</button>
+</nav>
+
+  <script type="module" src="./study.js"></script>
+</body>
+</html>
