@@ -1,0 +1,136 @@
+.proto-controls {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 2147483646;
+  display: grid;
+  gap: 10px;
+  width: 240px;
+  padding: 12px;
+  border-radius: 12px;
+  background: rgba(10, 10, 10, 0.82);
+  -webkit-backdrop-filter: blur(12px) saturate(1.4);
+  backdrop-filter: blur(12px) saturate(1.4);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.08) inset,
+    0 8px 24px rgba(0, 0, 0, 0.24);
+  color: rgba(255, 255, 255, 0.72);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 13px;
+  line-height: 1.3;
+  -webkit-font-smoothing: antialiased;
+}
+
+.proto-controls-row {
+  display: grid;
+  grid-template-columns: 64px 1fr 52px;
+  align-items: center;
+  gap: 8px;
+}
+
+.proto-controls-row[hidden] {
+  display: none;
+}
+
+.proto-controls label {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.proto-controls output {
+  font-variant-numeric: tabular-nums;
+  text-align: end;
+  color: #fff;
+}
+
+.proto-controls input[type="range"] {
+  width: 100%;
+  margin: 0;
+  accent-color: #fff;
+}
+
+.proto-controls select,
+.proto-controls input,
+.proto-controls button {
+  font: inherit;
+  font-size: 16px;
+  touch-action: manipulation;
+}
+
+.proto-controls select {
+  grid-column: 2 / -1;
+  height: 28px;
+  padding: 0 8px;
+  border: 0;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.proto-controls-speed {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  align-items: center;
+  gap: 8px;
+}
+
+.proto-controls-speed-options {
+  display: flex;
+  gap: 2px;
+}
+
+.proto-controls-speed-options label {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  min-height: 28px;
+  padding: 0 6px;
+  border-radius: 6px;
+  color: rgba(255, 255, 255, 0.55);
+  cursor: pointer;
+}
+
+.proto-controls-speed-options input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.proto-controls-speed-options label:has(input:checked) {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
+.proto-controls-speed-options label:has(input:focus-visible) {
+  outline: 2px solid rgba(255, 255, 255, 0.4);
+  outline-offset: 2px;
+}
+
+.proto-controls-copy {
+  height: 32px;
+  margin: 2px 0 0;
+  border: 0;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  cursor: pointer;
+}
+
+.proto-controls-copy:active {
+  transform: scale(0.96);
+}
+
+.proto-controls-copy:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.4);
+  outline-offset: 2px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .proto-controls-copy:hover {
+    background: rgba(255, 255, 255, 0.18);
+  }
+
+  .proto-controls-speed-options label:hover {
+    color: rgba(255, 255, 255, 0.85);
+  }
+}

@@ -1,0 +1,98 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  --profile-background: #f3f7fa;
+  --profile-heading: #0d2742;
+  --profile-text: #40546a;
+  --profile-muted: #62758b;
+
+  --text-display: 40px;
+  --text-lead: 26px;
+  --text-body: 18px;
+  --text-role: var(--text-body);
+  --text-caption: 13px;
+
+  margin: 0;
+  min-height: 100dvh;
+  background: var(--profile-background);
+  color: var(--profile-text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.profile {
+  display: grid;
+  gap: 28px;
+  max-inline-size: min(40rem, 65ch, calc(100vw - 288px));
+  padding: 24px 16px calc(96px + env(safe-area-inset-bottom, 0px));
+  font-family: Arial, sans-serif;
+}
+
+.profile-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-inline-start: 3px;
+  color: var(--profile-muted);
+  font: 400 var(--text-caption) / 1.25 ui-monospace, Menlo, Consolas, monospace;
+  letter-spacing: 0.045em;
+  text-transform: uppercase;
+}
+
+.profile-status svg {
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+.profile-header {
+  display: grid;
+  gap: 8px;
+  margin-block-start: -8px;
+}
+
+.profile h1,
+.profile p {
+  margin: 0;
+}
+
+.profile h1 {
+  color: var(--profile-heading);
+  font-size: var(--text-display);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+.profile-role {
+  color: var(--profile-muted);
+  font-size: var(--text-role);
+  line-height: 1.4;
+  text-wrap: pretty;
+}
+
+.profile-bio {
+  display: grid;
+  gap: 16px;
+  font-size: var(--text-body);
+  line-height: 1.55;
+  overflow-wrap: break-word;
+}
+
+.profile-bio h2 {
+  margin: 0;
+  color: var(--profile-heading);
+  font-size: var(--text-lead);
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+.profile-bio p {
+  text-wrap: pretty;
+}

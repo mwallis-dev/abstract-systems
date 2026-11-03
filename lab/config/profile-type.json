@@ -1,0 +1,64 @@
+{
+  "version": 1,
+  "savedAt": "2026-11-03T15:22:07.411Z",
+  "target": {
+    "html": "profile.html",
+    "css": "src/profile.css"
+  },
+  "config": {
+    "face": "areal",
+    "textDisplayPx": 40,
+    "textLeadPx": 26,
+    "textBodyPx": 18,
+    "textCaptionPx": 13,
+    "nameWeight": 600,
+    "nameLineHeightPct": 110,
+    "nameLetterSpacingEm": -25,
+    "roleWeight": 400,
+    "roleLineHeightPct": 140,
+    "statementWeight": 400,
+    "statementLineHeightPct": 130,
+    "statementLetterSpacingEm": -15,
+    "bioWeight": 400,
+    "bioLineHeightPct": 155,
+    "blockGapPx": 28,
+    "bioGapPx": 16,
+    "headerGapPx": 8
+  },
+  "css": {
+    "customProperties": {
+      "--text-display": "40px",
+      "--text-lead": "26px",
+      "--text-body": "18px",
+      "--text-caption": "13px"
+    },
+    "profileRoot": {
+      "gap": "28px",
+      "dataFace": "areal"
+    },
+    "blocks": {
+      "name": {
+        "fontWeight": 600,
+        "lineHeight": "1.10",
+        "letterSpacing": "-0.025em"
+      },
+      "role": {
+        "fontWeight": 400,
+        "lineHeight": "1.40"
+      },
+      "statement": {
+        "fontWeight": 400,
+        "lineHeight": "1.30",
+        "letterSpacing": "-0.015em"
+      },
+      "bio": {
+        "fontWeight": 400,
+        "lineHeight": "1.55",
+        "gap": "16px"
+      },
+      "header": {
+        "gap": "8px"
+      }
+    }
+  }
+}

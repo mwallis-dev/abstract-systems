@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Abstract Systems Component Lab</title>
+  </head>
+  <body>
+    <div class="lab">
+      <aside class="experiments">
+        <h1>Components</h1>
+        <nav aria-label="Experiments">
+          <ul id="experiment-list"></ul>
+        </nav>
+      </aside>
+
+      <main class="preview">
+        <iframe id="preview-frame" title="Live component preview"></iframe>
+      </main>
+
+      <aside class="details" aria-label="Experiment details">
+        <dl>
+          <dt>Last updated</dt>
+          <dd><time id="updated-date"></time></dd>
+        </dl>
+        <p id="category" hidden><span id="category-tag"></span></p>
+      </aside>
+    </div>
+    <script type="module" src="/src/lab.js"></script>
+  </body>
+</html>

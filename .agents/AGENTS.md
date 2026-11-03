@@ -47,5 +47,5 @@ The existing Vite configuration still supports Tailwind for the menu demo. New c
 - The clock reads the current time on load, each second while visible, and when the tab becomes visible. The dot and weather icon are static.
 - Changed clock digits roll upward through separate clipped windows. The colons stay still. Plain CSS animates two stacked values for 300ms with `cubic-bezier(0.16, 1, 0.3, 1)`.
 - Initial load, return to the tab, delayed updates, and reduced motion show the current digits at once. The complete time is exposed through the time element's accessible label; the visual digit tracks are hidden from screen readers.
-- The row uses a system monospace font. The reference uses Departure Mono, which is not included locally. Letter shapes and text width can therefore differ.
+- The row uses a system monospace font with tabular figures. The reference uses Departure Mono, so letter shapes and text width can still differ.
 - The row uses the measured 40px height, 8px gaps, 12px icon, and 6px dot inside a 12px container.

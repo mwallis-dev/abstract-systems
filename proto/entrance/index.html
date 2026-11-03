@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Entrance · prototype</title>
+    <link rel="stylesheet" href="./page.css" />
+    <link rel="stylesheet" href="./picker.css" />
+    <link rel="stylesheet" href="./controls.css" />
+  </head>
+  <body>
+    <div id="stage"></div>
+    <aside class="proto-controls" aria-label="Animation values">
+      <div class="proto-controls-row" data-field="duration">
+        <label for="ctrl-duration">duration</label>
+        <input id="ctrl-duration" type="range" min="120" max="2000" step="10" />
+        <output for="ctrl-duration"></output>
+      </div>
+      <div class="proto-controls-row" data-field="ease">
+        <label for="ctrl-ease">ease</label>
+        <select id="ctrl-ease">
+          <option value="cubic-bezier(0.25, 0.1, 0.25, 1)">ease</option>
+          <option value="cubic-bezier(0.32, 0.72, 0, 1)">enter</option>
+          <option value="cubic-bezier(0.215, 0.61, 0.355, 1)">out-cubic</option>
+          <option value="cubic-bezier(0.165, 0.84, 0.44, 1)">out-quart</option>
+          <option value="cubic-bezier(0.23, 1, 0.32, 1)">out-quint</option>
+          <option value="cubic-bezier(0.19, 1, 0.22, 1)">out-expo</option>
+        </select>
+      </div>
+      <div class="proto-controls-row" data-field="stagger">
+        <label for="ctrl-stagger">stagger</label>
+        <input id="ctrl-stagger" type="range" min="0" max="200" step="5" />
+        <output for="ctrl-stagger"></output>
+      </div>
+      <div class="proto-controls-row" data-field="offset">
+        <label for="ctrl-offset">offset</label>
+        <input id="ctrl-offset" type="range" min="0" max="40" step="1" />
+        <output for="ctrl-offset"></output>
+      </div>
+      <div class="proto-controls-row" data-field="blur">
+        <label for="ctrl-blur">blur</label>
+        <input id="ctrl-blur" type="range" min="0" max="12" step="0.5" />
+        <output for="ctrl-blur"></output>
+      </div>
+      <div class="proto-controls-speed" data-field="speed">
+        <span id="ctrl-speed-label">speed</span>
+        <div class="proto-controls-speed-options" role="radiogroup" aria-labelledby="ctrl-speed-label">
+          <label><input type="radio" name="speed" value="1" />1x</label>
+          <label><input type="radio" name="speed" value="0.5" />0.5x</label>
+          <label><input type="radio" name="speed" value="0.25" />0.25x</label>
+        </div>
+      </div>
+      <button type="button" class="proto-controls-copy">Copy values</button>
+    </aside>
+    <nav class="proto-picker" aria-label="Prototype variants">
+      <span class="proto-picker-highlight" aria-hidden="true"></span>
+      <button class="proto-picker-item" data-active aria-current="true">Match</button>
+      <button class="proto-picker-item">Quiet</button>
+      <button class="proto-picker-item">Snap</button>
+      <button class="proto-picker-item">Cascade</button>
+      <span class="proto-picker-divider" aria-hidden="true"></span>
+      <button class="proto-picker-item proto-picker-replay" aria-label="Replay animation (R)">↻</button>
+    </nav>
+    <script type="module" src="./harness.js"></script>
+  </body>
+</html>

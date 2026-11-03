@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile type · dial-in lab</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arimo:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/src/lab/profile-type.css" />
+  </head>
+  <body>
+    <div class="type-lab">
+      <aside class="type-lab__panel" aria-label="Type controls">
+        <header class="type-lab__header">
+          <h1>Profile type</h1>
+          <p>Dial-in lab — ships to <code>profile.html</code> / <code>src/profile.css</code></p>
+        </header>
+
+        <fieldset class="type-lab__group">
+          <legend>Font</legend>
+          <label class="type-lab__field">
+            <span>Face</span>
+            <select id="ctrl-face" data-bind="face">
+              <option value="areal">ABC Areal</option>
+              <option value="system">System</option>
+              <option value="arimo">Arimo</option>
+            </select>
+          </label>
+        </fieldset>
+
+        <fieldset class="type-lab__group">
+          <legend>Scale (px)</legend>
+          <label class="type-lab__field">
+            <span>Display · name</span>
+            <input type="range" id="ctrl-text-display" min="24" max="40" step="1" data-bind="textDisplayPx" />
+            <output for="ctrl-text-display" data-for="textDisplayPx"></output>
+          </label>
+          <label class="type-lab__field">
+            <span>Lead · statement</span>
+            <input type="range" id="ctrl-text-lead" min="18" max="28" step="1" data-bind="textLeadPx" />
+            <output for="ctrl-text-lead" data-for="textLeadPx"></output>
+          </label>
+          <label class="type-lab__field">
+            <span>Body · role &amp; bio</span>
+            <input type="range" id="ctrl-text-body" min="16" max="24" step="1" data-bind="textBodyPx" />
+            <output for="ctrl-text-body" data-for="textBodyPx"></output>
+          </label>
+          <label class="type-lab__field">
+            <span>Caption · status</span>
+            <input type="range" id="ctrl-text-caption" min="12" max="18" step="1" data-bind="textCaptionPx" />
+            <output for="ctrl-text-caption" data-for="textCaptionPx"></output>
+          </label>
+        </fieldset>
+
+        <fieldset class="type-lab__group">
+          <legend>Name</legend>
+          <label class="type-lab__field">
+            <span>Weight</span>
+            <input type="range" id="ctrl-name-weight" min="300" max="700" step="100" data-bind="nameWeight" />
+            <output for="ctrl-name-weight" data-for="nameWeight"></output>
+          </label>
+          <label class="type-lab__field">
+            <span>Line height</span>
+            <input type="range" id="ctrl-name-leading" min="100" max="140" step="1" data-bind="nameLineHeightPct" />
+            <output for="ctrl-name-leading" data-for="nameLineHeightPct"></output>
+          </label>
+          <label class="type-lab__field">
+            <span>Letter spacing (‰ em)</span>
+            <input type="range" id="ctrl-name-tracking" min="-40" max="10" step="1" data-bind="nameLetterSpacingEm" />
+            <output for="ctrl-name-tracking" data-for="nameLetterSpacingEm"></output>
+          </label>
+        </fieldset>
+
+        <fieldset class="type-lab__group">
+          <legend>Role</legend>
+          <label class="type-lab__field">
+            <span>Weight</span>
+            <input type="range" id="ctrl-role-weight" min="300" max="700" step="100" data-bind="roleWeight" />
+            <output for="ctrl-role-weight" data-for="roleWeight"></output>
+          </label>
+          <label class="type-lab__field">
+            <span>Line height</span>
+            <input type="range" id="ctrl-role-leading" min="120" max="160" step="1" data-bind="roleLineHeightPct" />
+            <output for="ctrl-role-leading" data-for="roleLineHeightPct"></output>
+          </label>
+        </fieldset>
+
+        <fieldset class="type-lab__group">
+          <legend>Statement</legend>
+          <label class="type-lab__field">
+            <span>Weight</span>
+            <input type="range" id="ctrl-statement-weight" min="300" max="700" step="100" data-bind="statementWeight" />
+            <output for="ctrl-statement-weight" data-for="statementWeight"></output>
+          </label>
+          <label class="type-lab__field">
+            <span>Line height</span>
+            <input type="range" id="ctrl-statement-leading" min="110" max="150" step="1" data-bind="statementLineHeightPct" />
+            <output for="ctrl-statement-leading" data-for="statementLineHeightPct"></output>
+          </label>
+          <label class="type-lab__field">
+            <span>Letter spacing (‰ em)</span>
+            <input type="range" id="ctrl-statement-tracking" min="-30" max="10" step="1" data-bind="statementLetterSpacingEm" />
+            <output for="ctrl-statement-tracking" data-for="statementLetterSpacingEm"></output>
+          </label>
+        </fieldset>
+
+        <fieldset class="type-lab__group">
+          <legend>Bio</legend>
+          <label class="type-lab__field">
+            <span>Weight</span>
+            <input type="range" id="ctrl-bio-weight" min="300" max="700" step="100" data-bind="bioWeight" />
+            <output for="ctrl-bio-weight" data-for="bioWeight"></output>
+          </label>
+          <label class="type-lab__field">
+            <span>Line height</span>
+            <input type="range" id="ctrl-bio-leading" min="130" max="180" step="1" data-bind="bioLineHeightPct" />
+            <output for="ctrl-bio-leading" data-for="bioLineHeightPct"></output>
+          </label>
+        </fieldset>
+
+        <fieldset class="type-lab__group">
+          <legend>Layout (px)</legend>
+          <label class="type-lab__field">
+            <span>Block gap</span>
+            <input type="range" id="ctrl-gap-block" min="16" max="40" step="1" data-bind="blockGapPx" />
+            <output for="ctrl-gap-block" data-for="blockGapPx"></output>
+          </label>
+          <label class="type-lab__field">
+            <span>Bio paragraph gap</span>
+            <input type="range" id="ctrl-gap-bio" min="8" max="24" step="1" data-bind="bioGapPx" />
+            <output for="ctrl-gap-bio" data-for="bioGapPx"></output>
+          </label>
+          <label class="type-lab__field">
+            <span>Header gap</span>
+            <input type="range" id="ctrl-gap-header" min="0" max="16" step="1" data-bind="headerGapPx" />
+            <output for="ctrl-gap-header" data-for="headerGapPx"></output>
+          </label>
+        </fieldset>
+
+        <div class="type-lab__actions">
+          <button type="button" id="save-config" class="type-lab__save">Save config</button>
+          <p id="save-status" class="type-lab__save-status" hidden></p>
+        </div>
+      </aside>
+
+      <div class="type-lab__preview-wrap">
+        <main class="profile" id="profile-preview" aria-labelledby="profile-name">
+          <div class="profile-status" data-type-block="caption">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2"/>
+              <path d="M6.453 15h11.094"/>
+              <path d="M8.5 2h7"/>
+            </svg>
+            <span>Abstract Systems Lab</span>
+          </div>
+
+          <header class="profile-header">
+            <h1 id="profile-name" data-type-block="name">Mark Wallis</h1>
+            <p class="profile-role" data-type-block="role">Interface design and prototyping</p>
+          </header>
+
+          <div class="profile-bio">
+            <h2 data-type-block="statement">I build small prototypes to make complex things feel simple.</h2>
+            <p data-type-block="bio">Product designer with many years of experience thinking through the details and designing software that makes sense. I specialise in systems and AI-powered experiences that help people understand, trust, and work alongside AI agents.</p>
+            <p data-type-block="bio">I'm a systems thinker who loves getting my hands-on the interface, combining product thinking, interaction design, and AI-assisted engineering to create working products.</p>
+            <p data-type-block="bio">The abstract systems lab is where I test the details. I work as simply as I can when it come to web tech: I use plain HTML, CSS and JavaScript so I can understand how each part works and adjust it as I go.</p>
+          </div>
+
+          <section class="profile-type" aria-labelledby="profile-type-heading">
+            <h2 id="profile-type-heading">Styles used above</h2>
+            <ul class="profile-type-styles">
+              <li><button type="button" class="profile-type-style" data-for="caption" aria-label="Highlight caption"></button></li>
+              <li><button type="button" class="profile-type-style" data-for="name" aria-label="Highlight name"></button></li>
+              <li><button type="button" class="profile-type-style" data-for="role" aria-label="Highlight role"></button></li>
+              <li><button type="button" class="profile-type-style" data-for="statement" aria-label="Highlight statement"></button></li>
+              <li><button type="button" class="profile-type-style" data-for="bio" aria-label="Highlight bio"></button></li>
+            </ul>
+          </section>
+        </main>
+      </div>
+    </div>
+    <script type="module" src="/src/lab/profile-type.js"></script>
+  </body>
+</html>

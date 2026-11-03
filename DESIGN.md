@@ -43,7 +43,7 @@ on load. Exactly one button has `aria-pressed="true"`.
 | `--menu-hover` | `#f3f6f9` | Unselected hover fill |
 | `--menu-focus` | `#5f5f5f` | Keyboard focus outline |
 
-- Font: Work Sans, weight 500. Keep the weight unchanged on selection and hover.
+- Font: Arial, weight 500. Keep the weight unchanged on selection and hover.
 - Labels: 16px with a 1.5 line height; 14px at viewport widths up to 24rem.
 - Buttons: at least 44px high and 44px wide; 10px vertical and 14px horizontal
   padding. At widths up to 24rem, use 12px horizontal padding.

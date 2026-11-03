@@ -1,0 +1,222 @@
+@import "./fonts.css";
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  --profile-background: #f3f7fa;
+  --profile-heading: #0d2742;
+  --profile-text: #40546a;
+  --profile-muted: #5d7086;
+  --profile-type-surface: color-mix(in srgb, var(--profile-heading) 10%, transparent);
+
+  /* Scale: display → lead → body (role + bio) → caption */
+  --text-display: 40px; /* name */
+  --text-lead: 26px; /* statement */
+  --text-body: 18px; /* role, bio */
+  --text-role: var(--text-body);
+  --text-caption: 13px; /* status */
+  --text-meta: 13px; /* style specs */
+
+  margin: 0;
+  background: var(--profile-background);
+  color: var(--profile-text);
+  font-family: var(--font-sans);
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.profile {
+  display: grid;
+  gap: 28px;
+  max-inline-size: min(40rem, 65ch);
+  padding: 8px 2px calc(28px + env(safe-area-inset-bottom, 0px));
+}
+
+.profile-status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-inline-start: 3px;
+  color: var(--profile-muted);
+  font: 400 var(--text-caption) / 1.25 var(--font-mono);
+  letter-spacing: 0.045em;
+  text-transform: uppercase;
+}
+
+.profile-status svg {
+  flex-shrink: 0;
+  pointer-events: none;
+}
+
+.profile-header {
+  display: grid;
+  gap: 8px;
+  margin-block-start: -8px;
+}
+
+.profile h1,
+.profile p {
+  margin: 0;
+}
+
+.profile h1 {
+  color: var(--profile-heading);
+  font-size: var(--text-display);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+.profile-role {
+  color: var(--profile-muted);
+  font-size: var(--text-role);
+  line-height: 1.4;
+  text-wrap: pretty;
+}
+
+.profile-bio {
+  display: grid;
+  gap: 16px;
+  font-size: var(--text-body);
+  line-height: 1.55;
+}
+
+.profile-bio h2 {
+  margin: 0;
+  color: var(--profile-heading);
+  font-size: var(--text-lead);
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+.profile-type {
+  display: grid;
+  gap: 8px;
+  padding-block-start: 8px;
+  border-block-start: 1px solid color-mix(in srgb, var(--profile-muted) 22%, transparent);
+  color: var(--profile-text);
+  font-size: var(--text-meta);
+  line-height: 1.45;
+}
+
+.profile-type h2 {
+  margin: 0;
+  color: var(--profile-muted);
+  font-size: inherit;
+  font-weight: 400;
+  text-wrap: balance;
+}
+
+.profile-type-styles {
+  display: grid;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.profile-type-style {
+  position: relative;
+  display: block;
+  width: 100%;
+  min-height: 44px;
+  margin: 0;
+  padding: 10px 8px;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: inherit;
+  font-family: var(--font-mono);
+  font-size: inherit;
+  font-weight: 400;
+  line-height: 1.45;
+  font-variant-numeric: tabular-nums;
+  text-align: start;
+  cursor: pointer;
+  transition: background-color 150ms ease-out, transform 150ms ease-out;
+}
+
+.profile-type-style:active {
+  transform: scale(0.96);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .profile-type-style:hover {
+    background: var(--profile-type-surface);
+  }
+}
+
+.profile-type-style[aria-pressed="true"] {
+  background: var(--profile-type-surface);
+}
+
+.profile-type-style:focus-visible {
+  background: var(--profile-type-surface);
+  outline: 2px solid color-mix(in srgb, var(--profile-heading) 45%, transparent);
+  outline-offset: 2px;
+}
+
+[data-type-block] {
+  border-radius: 4px;
+  margin-inline: -4px;
+  padding-inline: 4px;
+  transition: background-color 150ms ease-out;
+}
+
+.profile:has(.profile-type-style[data-for="caption"]:is(:focus-visible, [aria-pressed="true"])) [data-type-block="caption"],
+.profile:has(.profile-type-style[data-for="name"]:is(:focus-visible, [aria-pressed="true"])) [data-type-block="name"],
+.profile:has(.profile-type-style[data-for="role"]:is(:focus-visible, [aria-pressed="true"])) [data-type-block="role"],
+.profile:has(.profile-type-style[data-for="statement"]:is(:focus-visible, [aria-pressed="true"])) [data-type-block="statement"],
+.profile:has(.profile-type-style[data-for="bio"]:is(:focus-visible, [aria-pressed="true"])) [data-type-block="bio"] {
+  background: var(--profile-type-surface);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .profile:has(.profile-type-style[data-for="caption"]:hover) [data-type-block="caption"],
+  .profile:has([data-type-block="caption"]:hover) .profile-type-style[data-for="caption"],
+  .profile:has(.profile-type-style[data-for="name"]:hover) [data-type-block="name"],
+  .profile:has([data-type-block="name"]:hover) .profile-type-style[data-for="name"],
+  .profile:has(.profile-type-style[data-for="role"]:hover) [data-type-block="role"],
+  .profile:has([data-type-block="role"]:hover) .profile-type-style[data-for="role"],
+  .profile:has(.profile-type-style[data-for="statement"]:hover) [data-type-block="statement"],
+  .profile:has([data-type-block="statement"]:hover) .profile-type-style[data-for="statement"],
+  .profile:has(.profile-type-style[data-for="bio"]:hover) [data-type-block="bio"],
+  .profile:has([data-type-block="bio"]:hover) .profile-type-style[data-for="bio"] {
+    background: var(--profile-type-surface);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .profile-type-style,
+  [data-type-block] {
+    transition: none;
+  }
+
+  .profile-type-style:active {
+    transform: none;
+  }
+}
+
+.profile[data-face="system"] {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.profile[data-face="system"] .profile-status,
+.profile[data-face="system"] .profile-type-style {
+  font-family: ui-monospace, Menlo, Consolas, monospace;
+}
+
+.profile[data-face="arimo"] {
+  font-family: Arimo, Arial, sans-serif;
+}
+
+.profile[data-face="arimo"] .profile-status,
+.profile[data-face="arimo"] .profile-type-style {
+  font-family: ui-monospace, Menlo, Consolas, monospace;
+}
