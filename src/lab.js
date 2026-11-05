@@ -5,6 +5,7 @@ const experiments = [
   { name: 'Location clock', page: './location.html', updated: '2026-10-20', tag: 'Time' },
   { name: 'Text', page: './profile.html', updated: '2026-11-03', tag: 'Typography' },
   { name: 'Fade-in animation', page: './fade-in.html', updated: '2026-11-03', tag: 'Motion' },
+  { name: 'GitHub activity', page: './github-activity.html', updated: '2026-11-04', tag: 'Data' },
 ];
 
 const list = document.querySelector('#experiment-list');

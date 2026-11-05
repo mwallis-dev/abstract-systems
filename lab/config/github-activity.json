@@ -1,0 +1,22 @@
+{
+  "username": "mwallis-dev",
+  "width": 660,
+  "height": 44,
+  "gap": 4,
+  "radius": 4,
+  "zero": "#dfe4eb",
+  "low": "#c6e7d6",
+  "medium": "#a1d9bb",
+  "high": "#6ac58e",
+  "peak": "#2bae60",
+  "hoverScale": 145,
+  "nearScale": 130,
+  "farScale": 115,
+  "duration": 300,
+  "labelDuration": 0,
+  "easing": "ease-out",
+  "enterDuration": 600,
+  "enterSpread": 740,
+  "enterEasing": "ease-out",
+  "enterPower": 2
+}

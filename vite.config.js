@@ -1,7 +1,9 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import { defineConfig } from 'vite';
+import { defineConfig, loadEnv } from 'vite';
 import tailwindcss from '@tailwindcss/vite';
+import { githubActivityPlugin } from './server/github-activity.js';
+import activitySettings from './lab/config/github-activity.json' with { type: 'json' };
 
 function labSavePlugin() {
   return {
@@ -41,8 +43,11 @@ function labSavePlugin() {
   };
 }
 
-export default defineConfig({
-  plugins: [tailwindcss(), labSavePlugin()],
+export default defineConfig(({ mode }) => ({
+  plugins: [tailwindcss(), labSavePlugin(), githubActivityPlugin({
+    token: process.env.GITHUB_TOKEN || loadEnv(mode, process.cwd(), 'GITHUB_').GITHUB_TOKEN,
+    username: activitySettings.username,
+  })],
   build: {
     rollupOptions: {
       input: {
@@ -52,7 +57,8 @@ export default defineConfig({
         location: new URL('./location.html', import.meta.url).pathname,
         profile: new URL('./profile.html', import.meta.url).pathname,
         fadeIn: new URL('./fade-in.html', import.meta.url).pathname,
+        githubActivity: new URL('./github-activity.html', import.meta.url).pathname,
       },
     },
   },
-});
+}));

@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GitHub activity | Abstract Systems Lab</title>
+    <link rel="stylesheet" href="/src/github-activity.css" />
+  </head>
+  <body>
+    <main class="activity-demo">
+      <section class="activity" aria-labelledby="activity-heading">
+        <header class="activity-header">
+          <h1 id="activity-heading">GitHub activity</h1>
+        </header>
+        <div class="activity-summary">
+          <span>Last 30 days · UTC</span>
+          <span class="activity-total">Loading…</span>
+        </div>
+        <div class="activity-strip">
+          <ol class="activity-days" role="list" aria-label="Daily GitHub contributions" aria-busy="true"></ol>
+          <div class="activity-detail" aria-hidden="true" hidden></div>
+        </div>
+        <button class="activity-retry" type="button" hidden>Try again</button>
+        <noscript>Enable JavaScript to load GitHub activity.</noscript>
+      </section>
+    </main>
+    <script type="module" src="/src/github-activity.js"></script>
+  </body>
+</html>
