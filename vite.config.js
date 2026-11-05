@@ -52,6 +52,7 @@ export default defineConfig(({ mode }) => ({
     rollupOptions: {
       input: {
         main: new URL('./index.html', import.meta.url).pathname,
+        menuAlt2: new URL('./menu-alt-2.html', import.meta.url).pathname,
         lab: new URL('./lab.html', import.meta.url).pathname,
         icons: new URL('./icons.html', import.meta.url).pathname,
         location: new URL('./location.html', import.meta.url).pathname,

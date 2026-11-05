@@ -1,0 +1,157 @@
+@import "./fonts.css";
+
+:root {
+  font-family: var(--font-sans);
+  font-synthesis: none;
+  color-scheme: light;
+  --menu-surface: #f8f9fa;
+  --menu-ink: #20252b;
+  --menu-muted: #5d6570;
+  --menu-focus: #4b5056;
+  --menu-radius: 999px;
+  --menu-padding: 10px;
+  --menu-elevation:
+    0 0 0 1px rgb(0 0 0 / 6%),
+    0 1px 2px rgb(0 0 0 / 3%),
+    0 4px 8px -4px rgb(0 0 0 / 5%);
+  --menu-home: rgb(0 0 0 / 4%);
+  --menu-selected: rgb(0 0 0 / 8%);
+  --menu-pressed: rgb(0 0 0 / 12%);
+  --menu-hover: rgb(0 0 0 / 4%);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #fff;
+  color: var(--menu-ink);
+}
+
+.demo-page {
+  display: grid;
+  min-height: 100svh;
+  min-width: 0;
+  place-items: center;
+  padding: 24px 16px;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: max-content;
+  max-width: 100%;
+  padding: var(--menu-padding);
+  border-radius: var(--menu-radius);
+  background: var(--menu-surface);
+  box-shadow: var(--menu-elevation);
+}
+
+.menu__item {
+  appearance: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 44px;
+  min-height: 52px;
+  padding: 14px 20px;
+  border: 0;
+  border-radius: calc(var(--menu-radius) - var(--menu-padding));
+  background: transparent;
+  color: var(--menu-muted);
+  font: inherit;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.menu__home {
+  flex: none;
+  width: 52px;
+  padding: 14px;
+  background: var(--menu-home);
+}
+
+.menu__item svg {
+  flex: none;
+  width: 20px;
+  height: 20px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .menu__item:hover {
+    background: var(--menu-hover);
+    color: var(--menu-ink);
+  }
+
+  .menu__home:hover {
+    background: var(--menu-selected);
+  }
+}
+
+.menu__item[aria-pressed="true"] {
+  background: var(--menu-selected);
+  color: var(--menu-ink);
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 8%);
+}
+
+.menu__item:active {
+  background: var(--menu-pressed);
+  color: var(--menu-ink);
+}
+
+.menu__item:focus-visible {
+  outline: 2px solid var(--menu-focus);
+  outline-offset: 2px;
+  color: var(--menu-ink);
+}
+
+@media (forced-colors: active) {
+  .menu {
+    outline: 1px solid ButtonText;
+  }
+
+  .menu__item[aria-pressed="true"] {
+    outline: 2px solid Highlight;
+    outline-offset: -5px;
+  }
+
+  .menu__item:hover,
+  .menu__item:active {
+    background: Highlight;
+    color: HighlightText;
+  }
+
+  .menu__item:focus-visible {
+    outline: 2px solid ButtonText;
+    outline-offset: 2px;
+  }
+}
+
+@media (max-width: 34rem) {
+  .menu {
+    --menu-padding: 6px;
+    gap: 4px;
+  }
+
+  .menu__home {
+    width: 48px;
+    min-height: 48px;
+  }
+
+  .menu__item {
+    flex-direction: column;
+    gap: 4px;
+    padding: 10px 8px;
+    font-size: 14px;
+  }
+}
